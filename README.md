@@ -1,5 +1,7 @@
 # React + Vite
 
+Open: readMe.html
+
 🚀 3D Scene Explorer
 A versatile web-based 3D scene explorer built with React and Three.js, allowing users to interactively
 create, manipulate, and visualize 3D objects and lights in a dynamic environment.
