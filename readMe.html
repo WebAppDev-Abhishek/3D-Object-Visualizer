@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>README - 3D Scene Explorer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2, h3 {
+            color: #0056b3;
+        }
+        h1 {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        h2 {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        code {
+            background-color: #e9e9e9;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        pre {
+            background-color: #e9e9e9;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        strong {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>🚀 3D Scene Explorer</h1>
+    <p>A versatile web-based 3D scene explorer built with React and Three.js, allowing users to interactively create, manipulate, and visualize 3D objects and lights in a dynamic environment.</p>
+
+    <h2>✨ Features</h2>
+    <ul>
+        <li><strong>Add Basic Shapes:</strong> Easily add cubes, spheres, cylinders, cones, and tori to the scene.</li>
+        <li><strong>Add Point Lights:</strong> Introduce dynamic lighting to your scene with adjustable color and intensity.</li>
+        <li><strong>Interactive Object Manipulation:</strong> Select objects (shapes and lights) and use <code>TransformControls</code> to move, rotate, and scale them directly in the 3D space.</li>
+        <li><strong>Visual Selection Highlight:</strong> Selected objects change to a lighter color for clear visual feedback.</li>
+        <li><strong>Property Editing:</strong> Adjust the color and scale of selected shapes, and the color and intensity of selected lights via intuitive UI controls.</li>
+        <li><strong>Camera Controls:</strong>
+            <ul>
+                <li><strong>Orbit camera</strong> around the scene using mouse/trackpad.</li>
+                <li><strong>Move camera</strong> using arrow keys (forward, backward, strafe left, strafe right).</li>
+                <li><strong>Toggle camera motion</strong> (including auto-rotation and arrow key movement) on/off by pressing the <strong>Spacebar</strong>.</li>
+                <li><strong>Toggle auto-rotation</strong> of the scene.</li>
+            </ul>
+        </li>
+        <li><strong>Scene Management:</strong>
+            <ul>
+                <li><strong>Undo and Redo</strong> actions for scene modifications (adding, removing, transforming objects).</li>
+                <li><strong>Remove the last added object</strong> or the currently selected object.</li>
+                <li><strong>Reset the entire scene</strong> to its initial empty state.</li>
+            </ul>
+        </li>
+        <li><strong>Environment Customization:</strong>
+            <ul>
+                <li><strong>Toggle the visibility</strong> of the grid helper.</li>
+                <li><strong>Change the background color</strong> of the 3D scene.</li>
+            </ul>
+        </li>
+        <li><strong>Image Import:</strong> Import local image files and display them as textured planes in the 3D scene.</li>
+        <li><strong>Responsive Design:</strong> The application adapts to different screen sizes.</li>
+    </ul>
+
+    <h2>🛠️ Technologies Used</h2>
+    <ul>
+        <li><strong>React:</strong> A JavaScript library for building user interfaces.</li>
+        <li><strong>Three.js:</strong> A JavaScript 3D library that makes it easier to display 3D graphics in the browser using WebGL.
+            <ul>
+                <li><code>OrbitControls</code>: For interactive camera control.</li>
+                <li><code>TransformControls</code>: For manipulating objects in 3D space.</li>
+                <li><code>PointLightHelper</code>: For visualizing point light positions.</li>
+            </ul>
+        </li>
+        <li><strong>Tailwind CSS:</strong> A utility-first CSS framework for rapidly building custom designs.</li>
+    </ul>
+
+    <h2>🚀 Getting Started</h2>
+    <p>Follow these instructions to get a copy of the project up and running on your local machine.</p>
+
+    <h3>Prerequisites</h3>
+    <p>You need to have Node.js and npm (Node Package Manager) installed on your system.</p>
+    <ul>
+        <li><a href="https://nodejs.org/en/download/">Node.js (includes npm)</a></li>
+    </ul>
+
+    <h3>Installation</h3>
+    <p>1. <strong>Clone the repository (or create a new React app):</strong></p>
+    <p>If you're starting from scratch, you can create a new React app and then copy the source code.</p>
+    <pre><code># Option 1: Create a new React app (recommended for fresh start)
+npx create-react-app my-3d-scene-explorer
+cd my-3d-scene-explorer
+
+# Option 2: If you have an existing project, navigate to its root
+# cd path/to/your/project
+</code></pre>
+    <p>2. <strong>Install project dependencies:</strong></p>
+    <pre><code>npm install three
+# For Tailwind CSS (if not already set up by your React app template):
+npm install -D tailwindcss postcss autoprefixer
+</code></pre>
+    <p>3. <strong>Set up Tailwind CSS (if using a new React app or not already configured):</strong></p>
+    <p>Initialize Tailwind CSS:</p>
+    <pre><code>npx tailwindcss init -p
+</code></pre>
+    <p>This will create <code>tailwind.config.js</code> and <code>postcss.config.js</code>.</p>
+    <p>Update <code>tailwind.config.js</code> to scan your source files:</p>
+    <pre><code>&lt;!-- tailwind.config.js content from previous response --&gt;
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "./public/index.html",
+  ],
+  theme: {
+    extend: {
+      fontFamily: {
+        inter: ['Inter', 'sans-serif'], // Define Inter font
+      },
+    },
+  },
+  plugins: [],
+}
+</code></pre>
+    <p>Add Tailwind directives to your <code>src/index.css</code> (create this file if it doesn't exist):</p>
+    <pre><code>&lt;!-- src/index.css content from previous response --&gt;
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  overflow: hidden; /* Prevent body scroll, as the canvas handles overflow */
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+}
+</code></pre>
+    <p>4. <strong>Copy the source files:</strong></p>
+    <p>Place the provided code into the following structure within your <code>src/</code> directory:</p>
+    <pre><code>src/
+├── App.js
+├── index.js
+├── index.css
+├── components/
+│   └── SceneControls.js
+├── hooks/
+│   ├── useThreeScene.js
+│   ├── useKeyboardControls.js
+│   └── useObjectSelection.js
+└── utils/
+    ├── colorUtils.js
+    └── objectCreation.js
+</code></pre>
+    <p>
+        Refer to the individual immersive artifacts for the content of each file:
+        <ul>
+            <li><code>src/App.js</code>: Refer to the `src-app-js` immersive.</li>
+            <li><code>src/index.js</code>: Refer to the `src-index-js` immersive.</li>
+            <li><code>src/index.css</code>: Refer to the `src-index-css` immersive.</li>
+            <li><code>tailwind.config.js</code>: Refer to the `src-tailwind-config-js` immersive (this file is at the project root, not in `src`).</li>
+            <li><code>src/utils/colorUtils.js</code>: Refer to the `src-utils-color-utils-js` immersive.</li>
+            <li><code>src/utils/objectCreation.js</code>: Refer to the `src-utils-object-creation-js` immersive.</li>
+            <li><code>src/hooks/useThreeScene.js</code>: Refer to the `src-hooks-use-three-scene-js` immersive.</li>
+            <li><code>src/hooks/useKeyboardControls.js</code>: Refer to the `src-hooks-use-keyboard-controls-js` immersive.</li>
+            <li><code>src/hooks/useObjectSelection.js</code>: Refer to the `src-hooks-use-object-selection-js` immersive.</li>
+            <li><code>src/components/SceneControls.js</code>: Refer to the `src-components-scene-controls-js` immersive.</li>
+        </ul>
+    </p>
+
+    <h3>Running the Application</h3>
+    <p>Once everything is set up, you can start the development server:</p>
+    <pre><code>npm start
+# or if using Vite:
+# npm run dev
+</code></pre>
+    <p>This will open the application in your browser, usually at <code>http://localhost:3000</code> (or <code>http://localhost:5173</code> for Vite).</p>
+
+    <h2>💡 Usage</h2>
+    <ul>
+        <li><strong>Add Objects:</strong> Use the buttons in the header to add various 3D shapes and point lights to the scene. You can set their initial X, Y, Z positions.</li>
+        <li><strong>Select Objects:</strong> Click on any object (shape or light helper) in the 3D view to select it. The selected object will turn a lighter shade.</li>
+        <li><strong>Manipulate Objects:</strong> Once selected, use the <code>TransformControls</code> (the colored axes that appear) to move, rotate, or scale the object.</li>
+        <li><strong>Edit Properties:</strong> When an object is selected, use the "Selected" panel in the header to change its color, scale (for shapes), or intensity (for lights).</li>
+        <li><strong>Camera Navigation:</strong>
+            <ul>
+                <li><strong>Mouse/Trackpad:</strong> Click and drag to orbit the camera. Scroll to zoom.</li>
+                <li><strong>Arrow Keys:</strong> Use <code>ArrowUp</code>, <code>ArrowDown</code>, <code>ArrowLeft</code>, <code>ArrowRight</code> to move the camera.</li>
+                <li><strong>Spacebar:</strong> Press the <code>Spacebar</code> to toggle camera movement (including OrbitControls and arrow key movement) on/off.</li>
+            </ul>
+        </li>
+        <li><strong>Scene Controls:</strong>
+            <ul>
+                <li><strong>Grid On/Off:</strong> Toggle the visibility of the ground grid.</li>
+                <li><strong>Undo/Redo:</strong> Revert or reapply recent scene changes.</li>
+                <li><strong>Remove Last/Selected:</strong> Delete objects from the scene.</li>
+                <li><strong>Reset Scene:</strong> Clear all objects and reset the scene to its default state.</li>
+                <li><strong>Background:</strong> Change the background color of the scene.</li>
+                <li><strong>Auto-rotate:</strong> Toggle automatic rotation of the camera around the scene.</li>
+            </ul>
+        </li>
+        <li><strong>Import Images:</strong> Use the "Import Image" button to load a local image file as a textured plane in the scene.</li>
+    </ul>
+
+    <h2>🤝 Contributing</h2>
+    <p>Feel free to fork this repository, open issues, or submit pull requests to improve the project.</p>
+</body>
+</html>
